@@ -1,0 +1,903 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   ✦ SEKAI TOOLBOX — 低調奢華 · 優雅古典 · 細緻絢麗 ✦
+   Refined Luxury Design System with Classical Elements
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Noto+Serif+TC:wght@400;500;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ════════════════════════════════════════════════════════════════════════════
+   ❖ BASE STYLES — 夜幕金箔 · Night Velvet & Gold Leaf
+   ════════════════════════════════════════════════════════════════════════════ */
+
+@layer base {
+  :root {
+    /* Core Palette */
+    --color-void: 8 8 12;
+    --color-ink: 14 14 20;
+    --color-velvet: 20 18 28;
+    --color-charcoal: 28 26 38;
+    --color-gold: 198 169 118;
+    --color-champagne: 245 235 210;
+    
+    /* Decorative */
+    --ornament-opacity: 0.06;
+    --border-ornate: 1px solid rgba(198, 169, 118, 0.2);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-sekai-void text-sekai-pearl font-serif;
+    font-family: 'Times New Roman', 'EB Garamond', 'Noto Serif TC', Georgia, serif;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+    letter-spacing: 0.01em;
+    line-height: 1.7;
+    background-image: 
+      /* 頂部光暈 */
+      radial-gradient(ellipse 100% 60% at 50% -10%, rgba(198, 169, 118, 0.04), transparent 60%),
+      /* 底部柔光 */
+      radial-gradient(ellipse 80% 50% at 50% 110%, rgba(148, 119, 88, 0.03), transparent 50%),
+      /* 左側絢麗 */
+      radial-gradient(ellipse 40% 80% at -5% 50%, rgba(138, 100, 170, 0.015), transparent 70%),
+      /* 右側溫暖 */
+      radial-gradient(ellipse 40% 80% at 105% 50%, rgba(170, 138, 100, 0.015), transparent 70%);
+  }
+
+  /* 優雅選取效果 */
+  ::selection {
+    background: rgba(198, 169, 118, 0.25);
+    color: #f5ebd2;
+    text-shadow: none;
+  }
+
+  ::-moz-selection {
+    background: rgba(198, 169, 118, 0.25);
+    color: #f5ebd2;
+  }
+
+  /* 精緻滾動條 */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: linear-gradient(180deg, #0e0e14 0%, #14121c 100%);
+    border-left: 1px solid rgba(198, 169, 118, 0.08);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, 
+      rgba(198, 169, 118, 0.4) 0%, 
+      rgba(168, 139, 98, 0.3) 50%,
+      rgba(198, 169, 118, 0.4) 100%);
+    border-radius: 4px;
+    border: 1px solid rgba(198, 169, 118, 0.15);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, 
+      rgba(198, 169, 118, 0.5) 0%, 
+      rgba(188, 159, 118, 0.4) 50%,
+      rgba(198, 169, 118, 0.5) 100%);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: #0e0e14;
+  }
+
+  /* Typography Base */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', 'Playfair Display', 'Noto Serif TC', 'Times New Roman', serif;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   ❖ COMPONENT STYLES — 精緻組件
+   ════════════════════════════════════════════════════════════════════════════ */
+
+@layer components {
+  /* ─── 容器 ─── */
+  .container-main {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-prose {
+    @apply max-w-4xl mx-auto px-4 sm:px-6;
+  }
+
+  /* ─── 紋理覆蓋層 ─── */
+  .texture-grain {
+    @apply fixed inset-0 pointer-events-none z-50;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.018;
+    mix-blend-mode: overlay;
+  }
+
+  /* ─── 古典裝飾邊框 ─── */
+  .border-ornate {
+    position: relative;
+    border: 1px solid rgba(198, 169, 118, 0.15);
+  }
+
+  .border-ornate::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(198, 169, 118, 0.5) 30%, 
+      rgba(245, 235, 210, 0.6) 50%, 
+      rgba(198, 169, 118, 0.5) 70%, 
+      transparent 100%);
+  }
+
+  .border-ornate::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(198, 169, 118, 0.4) 30%, 
+      rgba(198, 169, 118, 0.5) 50%, 
+      rgba(198, 169, 118, 0.4) 70%, 
+      transparent 100%);
+  }
+
+  /* ─── 卡片 ─── */
+  .card {
+    @apply relative rounded-xl backdrop-blur-sm transition-all duration-500;
+    background: linear-gradient(145deg, 
+      rgba(28, 26, 38, 0.9) 0%, 
+      rgba(20, 18, 28, 0.95) 50%,
+      rgba(28, 26, 38, 0.85) 100%);
+    border: 1px solid rgba(198, 169, 118, 0.12);
+    box-shadow: 
+      0 4px 24px rgba(0, 0, 0, 0.4),
+      0 1px 0 rgba(255, 255, 255, 0.02) inset,
+      0 -1px 0 rgba(0, 0, 0, 0.2) inset;
+  }
+
+  .card:hover {
+    border-color: rgba(198, 169, 118, 0.25);
+    box-shadow: 
+      0 8px 40px rgba(0, 0, 0, 0.5),
+      0 0 30px rgba(198, 169, 118, 0.08),
+      0 1px 0 rgba(255, 255, 255, 0.03) inset;
+    transform: translateY(-2px);
+  }
+
+  .card-glass {
+    @apply relative rounded-xl backdrop-blur-md;
+    background: linear-gradient(135deg, 
+      rgba(28, 26, 38, 0.7) 0%, 
+      rgba(14, 14, 20, 0.8) 100%);
+    border: 1px solid rgba(198, 169, 118, 0.1);
+  }
+
+  .card-luxury {
+    @apply relative rounded-xl overflow-hidden;
+    background: linear-gradient(160deg, 
+      rgba(38, 35, 50, 0.95) 0%, 
+      rgba(20, 18, 28, 0.98) 40%,
+      rgba(25, 22, 35, 0.95) 100%);
+    border: 1px solid rgba(198, 169, 118, 0.18);
+    box-shadow: 
+      0 10px 50px rgba(0, 0, 0, 0.5),
+      0 0 1px rgba(198, 169, 118, 0.3) inset;
+  }
+
+  .card-luxury::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 5%, 
+      rgba(198, 169, 118, 0.4) 20%, 
+      rgba(245, 235, 210, 0.5) 50%, 
+      rgba(198, 169, 118, 0.4) 80%, 
+      transparent 95%);
+  }
+
+  /* ─── 按鈕 ─── */
+  .btn {
+    @apply relative inline-flex items-center justify-center gap-2 px-6 py-3 
+           font-serif text-sm tracking-wider rounded-lg transition-all duration-300
+           disabled:opacity-50 disabled:cursor-not-allowed;
+    font-family: 'Times New Roman', 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .btn-primary {
+    @apply btn;
+    background: linear-gradient(135deg, 
+      rgba(198, 169, 118, 0.95) 0%, 
+      rgba(168, 139, 88, 0.9) 50%,
+      rgba(198, 169, 118, 0.95) 100%);
+    color: #0e0e14;
+    border: 1px solid rgba(245, 235, 210, 0.3);
+    box-shadow: 
+      0 4px 20px rgba(198, 169, 118, 0.25),
+      0 1px 0 rgba(255, 255, 255, 0.2) inset;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, 
+      rgba(218, 189, 138, 1) 0%, 
+      rgba(198, 169, 118, 0.95) 50%,
+      rgba(218, 189, 138, 1) 100%);
+    box-shadow: 
+      0 6px 30px rgba(198, 169, 118, 0.35),
+      0 0 20px rgba(198, 169, 118, 0.2),
+      0 1px 0 rgba(255, 255, 255, 0.25) inset;
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .btn-secondary {
+    @apply btn;
+    background: linear-gradient(135deg, 
+      rgba(28, 26, 38, 0.9) 0%, 
+      rgba(38, 35, 50, 0.8) 100%);
+    color: #c6a976;
+    border: 1px solid rgba(198, 169, 118, 0.25);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .btn-secondary:hover {
+    background: linear-gradient(135deg, 
+      rgba(38, 35, 50, 0.95) 0%, 
+      rgba(48, 45, 60, 0.9) 100%);
+    border-color: rgba(198, 169, 118, 0.4);
+    color: #e8d4a8;
+    box-shadow: 
+      0 4px 20px rgba(0, 0, 0, 0.4),
+      0 0 15px rgba(198, 169, 118, 0.1);
+  }
+
+  .btn-ghost {
+    @apply btn text-sekai-silver;
+    background: transparent;
+    border: 1px solid transparent;
+  }
+
+  .btn-ghost:hover {
+    color: #c6a976;
+    background: rgba(198, 169, 118, 0.06);
+    border-color: rgba(198, 169, 118, 0.15);
+  }
+
+  .btn-icon {
+    @apply p-2.5 rounded-lg transition-all duration-300;
+    color: #8a8a99;
+    border: 1px solid transparent;
+  }
+
+  .btn-icon:hover {
+    color: #c6a976;
+    background: rgba(198, 169, 118, 0.08);
+    border-color: rgba(198, 169, 118, 0.15);
+  }
+
+  /* ─── 輸入框 ─── */
+  .input {
+    @apply w-full px-4 py-3 rounded-lg transition-all duration-300;
+    font-family: 'Times New Roman', 'EB Garamond', serif;
+    background: linear-gradient(135deg, 
+      rgba(20, 18, 28, 0.9) 0%, 
+      rgba(28, 26, 38, 0.8) 100%);
+    border: 1px solid rgba(198, 169, 118, 0.15);
+    color: #e8e8f0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) inset;
+  }
+
+  .input::placeholder {
+    color: #5a5a66;
+    font-style: italic;
+  }
+
+  .input:focus {
+    outline: none;
+    border-color: rgba(198, 169, 118, 0.4);
+    box-shadow: 
+      0 0 0 3px rgba(198, 169, 118, 0.08),
+      0 2px 10px rgba(0, 0, 0, 0.2) inset;
+  }
+
+  .input-sm {
+    @apply px-3 py-2 text-sm;
+  }
+
+  .select {
+    @apply input appearance-none cursor-pointer pr-12;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23c6a976'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-size: 1.25rem;
+    background-position: right 1rem center;
+    background-repeat: no-repeat;
+  }
+
+  /* ─── 標題系統 ─── */
+  .heading-display {
+    font-family: 'Cinzel', 'Playfair Display', 'Times New Roman', 'Noto Serif TC', serif;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-shadow: 0 2px 20px rgba(198, 169, 118, 0.15);
+  }
+
+  .heading-1 {
+    @apply heading-display text-4xl sm:text-5xl lg:text-6xl;
+    background: linear-gradient(135deg, 
+      #f5ebd2 0%, 
+      #c6a976 30%, 
+      #e8d4a8 50%, 
+      #c6a976 70%, 
+      #f5ebd2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .heading-2 {
+    @apply heading-display text-2xl sm:text-3xl;
+    color: #e8d4a8;
+    text-shadow: 0 1px 10px rgba(198, 169, 118, 0.2);
+  }
+
+  .heading-3 {
+    @apply heading-display text-xl sm:text-2xl;
+    color: #c6a976;
+  }
+
+  .heading-section {
+    font-family: 'Times New Roman', 'Cinzel', serif;
+    @apply font-medium text-base tracking-widest uppercase;
+    color: #a89068;
+    letter-spacing: 0.15em;
+  }
+
+  /* ─── 標籤 ─── */
+  .tag {
+    @apply inline-flex items-center px-3 py-1.5 text-xs rounded-full 
+           border transition-all duration-300;
+    font-family: 'Times New Roman', serif;
+    letter-spacing: 0.05em;
+  }
+
+  .tag-gold {
+    @apply tag;
+    background: rgba(198, 169, 118, 0.1);
+    color: #c6a976;
+    border-color: rgba(198, 169, 118, 0.25);
+  }
+
+  .tag-gold:hover {
+    background: rgba(198, 169, 118, 0.15);
+    border-color: rgba(198, 169, 118, 0.4);
+  }
+
+  .tag-unit-ln {
+    @apply tag;
+    background: rgba(68, 85, 221, 0.12);
+    color: #6677ee;
+    border-color: rgba(68, 85, 221, 0.3);
+  }
+
+  .tag-unit-mmj {
+    @apply tag;
+    background: rgba(136, 221, 68, 0.12);
+    color: #99ee55;
+    border-color: rgba(136, 221, 68, 0.3);
+  }
+
+  .tag-unit-vbs {
+    @apply tag;
+    background: rgba(238, 102, 119, 0.12);
+    color: #ff7788;
+    border-color: rgba(238, 102, 119, 0.3);
+  }
+
+  .tag-unit-wxs {
+    @apply tag;
+    background: rgba(255, 170, 0, 0.12);
+    color: #ffbb22;
+    border-color: rgba(255, 170, 0, 0.3);
+  }
+
+  .tag-unit-niigo {
+    @apply tag;
+    background: rgba(153, 68, 187, 0.12);
+    color: #aa55cc;
+    border-color: rgba(153, 68, 187, 0.3);
+  }
+
+  .tag-unit-vs {
+    @apply tag;
+    background: rgba(0, 187, 187, 0.12);
+    color: #22cccc;
+    border-color: rgba(0, 187, 187, 0.3);
+  }
+
+  /* ─── 分隔線 ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(138, 138, 153, 0.2) 20%, 
+      rgba(138, 138, 153, 0.3) 50%, 
+      rgba(138, 138, 153, 0.2) 80%, 
+      transparent 100%);
+  }
+
+  .divider-gold {
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(198, 169, 118, 0.2) 15%, 
+      rgba(198, 169, 118, 0.5) 35%,
+      rgba(245, 235, 210, 0.6) 50%, 
+      rgba(198, 169, 118, 0.5) 65%,
+      rgba(198, 169, 118, 0.2) 85%, 
+      transparent 100%);
+  }
+
+  .divider-ornate {
+    position: relative;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .divider-ornate::before {
+    content: '◆';
+    font-size: 8px;
+    color: rgba(198, 169, 118, 0.5);
+    padding: 0 20px;
+    background: #0e0e14;
+    position: relative;
+    z-index: 1;
+  }
+
+  .divider-ornate::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(198, 169, 118, 0.3) 30%, 
+      rgba(198, 169, 118, 0.3) 70%, 
+      transparent 100%);
+  }
+
+  /* ─── 數字顯示 ─── */
+  .number-display {
+    font-family: 'Cinzel', 'Playfair Display', 'Times New Roman', serif;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    font-feature-settings: "tnum" 1;
+  }
+
+  .number-xl {
+    @apply number-display text-3xl sm:text-4xl;
+    background: linear-gradient(135deg, #e8d4a8 0%, #c6a976 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+  }
+
+  .number-lg {
+    @apply number-display text-xl;
+    color: #c6a976;
+  }
+
+  .number-md {
+    @apply number-display text-lg;
+    color: #d4d4e0;
+  }
+
+  /* ─── 表格 ─── */
+  .table-container {
+    @apply overflow-x-auto rounded-xl;
+    border: 1px solid rgba(198, 169, 118, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .table {
+    @apply w-full;
+    font-family: 'Times New Roman', 'EB Garamond', serif;
+  }
+
+  .table thead {
+    background: linear-gradient(135deg, 
+      rgba(38, 35, 50, 0.9) 0%, 
+      rgba(28, 26, 38, 0.95) 100%);
+    border-bottom: 1px solid rgba(198, 169, 118, 0.2);
+  }
+
+  .table th {
+    @apply px-5 py-4 text-left text-xs font-medium uppercase tracking-wider;
+    color: #a89068;
+    letter-spacing: 0.1em;
+    font-family: 'Cinzel', 'Times New Roman', serif;
+  }
+
+  .table td {
+    @apply px-5 py-4;
+    border-top: 1px solid rgba(198, 169, 118, 0.08);
+    color: #c4c4d0;
+  }
+
+  .table tbody tr {
+    @apply transition-all duration-300;
+  }
+
+  .table tbody tr:hover {
+    background: rgba(198, 169, 118, 0.04);
+  }
+
+  /* ─── 進度條 ─── */
+  .progress-bar {
+    @apply h-2 rounded-full overflow-hidden;
+    background: rgba(20, 18, 28, 0.8);
+    border: 1px solid rgba(198, 169, 118, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) inset;
+  }
+
+  .progress-fill {
+    @apply h-full rounded-full transition-all duration-700;
+    background: linear-gradient(90deg, 
+      rgba(168, 139, 88, 0.9) 0%, 
+      rgba(198, 169, 118, 1) 50%, 
+      rgba(232, 212, 168, 0.9) 100%);
+    box-shadow: 0 0 10px rgba(198, 169, 118, 0.4);
+  }
+
+  /* ─── 工具提示 ─── */
+  .tooltip {
+    @apply absolute z-50 px-4 py-2 text-sm 
+           rounded-lg pointer-events-none opacity-0 transition-opacity duration-300;
+    font-family: 'Times New Roman', serif;
+    background: linear-gradient(135deg, 
+      rgba(28, 26, 38, 0.98) 0%, 
+      rgba(20, 18, 28, 0.98) 100%);
+    color: #e8d4a8;
+    border: 1px solid rgba(198, 169, 118, 0.25);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  /* ─── 發光效果 ─── */
+  .glow-gold {
+    box-shadow: 
+      0 0 20px rgba(198, 169, 118, 0.15),
+      0 0 40px rgba(198, 169, 118, 0.08);
+  }
+
+  .glow-gold-intense {
+    box-shadow: 
+      0 0 30px rgba(198, 169, 118, 0.25),
+      0 0 60px rgba(198, 169, 118, 0.15),
+      0 0 100px rgba(198, 169, 118, 0.08);
+  }
+
+  /* ─── 動畫延遲 ─── */
+  .animate-stagger-1 { animation-delay: 0.1s; }
+  .animate-stagger-2 { animation-delay: 0.2s; }
+  .animate-stagger-3 { animation-delay: 0.3s; }
+  .animate-stagger-4 { animation-delay: 0.4s; }
+  .animate-stagger-5 { animation-delay: 0.5s; }
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   ❖ UTILITY CLASSES — 精緻工具
+   ════════════════════════════════════════════════════════════════════════════ */
+
+@layer utilities {
+  /* 漸層文字 */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, 
+      #f5ebd2 0%, 
+      #c6a976 25%, 
+      #e8d4a8 50%, 
+      #c6a976 75%, 
+      #f5ebd2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-luxury {
+    background: linear-gradient(135deg, 
+      #e8d4a8 0%, 
+      #c6a976 30%, 
+      #a89068 60%, 
+      #c6a976 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* 漸層邊框 */
+  .border-gradient-gold {
+    border: 1px solid transparent;
+    background: linear-gradient(#0e0e14, #0e0e14) padding-box,
+                linear-gradient(135deg, rgba(198, 169, 118, 0.4), rgba(245, 235, 210, 0.3)) border-box;
+  }
+
+  /* 模糊效果 */
+  .backdrop-blur-xs {
+    backdrop-filter: blur(4px);
+  }
+
+  /* 隱藏滾動條 */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 比例容器 */
+  .aspect-card {
+    aspect-ratio: 3 / 4;
+  }
+
+  .aspect-banner {
+    aspect-ratio: 16 / 5;
+  }
+
+  .aspect-square-sm {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* 古典裝飾文字 */
+  .text-ornate {
+    font-family: 'Cinzel', 'Playfair Display', 'Times New Roman', serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* 絲絨背景 */
+  .bg-velvet {
+    background: linear-gradient(160deg, 
+      rgba(38, 35, 55, 0.95) 0%, 
+      rgba(20, 18, 28, 1) 40%, 
+      rgba(28, 25, 40, 0.95) 100%);
+  }
+
+  /* 金箔效果 */
+  .bg-gold-foil {
+    background: linear-gradient(135deg, 
+      rgba(198, 169, 118, 0.08) 0%, 
+      rgba(245, 235, 210, 0.05) 50%, 
+      rgba(198, 169, 118, 0.08) 100%);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   ❖ ANIMATIONS — 優雅動效
+   ════════════════════════════════════════════════════════════════════════════ */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(198, 169, 118, 0.1),
+      0 0 40px rgba(198, 169, 118, 0.05);
+  }
+  50% {
+    box-shadow: 
+      0 0 40px rgba(198, 169, 118, 0.2),
+      0 0 80px rgba(198, 169, 118, 0.1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes elegant-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes border-flow {
+  0%, 100% {
+    border-color: rgba(198, 169, 118, 0.2);
+  }
+  50% {
+    border-color: rgba(198, 169, 118, 0.4);
+  }
+}
+
+@keyframes golden-shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-elegant-reveal {
+  animation: elegant-reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-border-flow {
+  animation: border-flow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 3s linear infinite;
+  background-size: 200% 100%;
+}
+
+/* ════════════════════════════════════════════════════════════════════════════
+   ❖ SPECIAL EFFECTS — 絢麗特效
+   ════════════════════════════════════════════════════════════════════════════ */
+
+/* 絲綢光澤效果 */
+.silk-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.silk-sheen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 50%,
+    transparent 100%
+  );
+  animation: silkMove 8s ease-in-out infinite;
+}
+
+@keyframes silkMove {
+  0%, 100% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+}
+
+/* 裝飾角落 */
+.corner-ornament {
+  position: relative;
+}
+
+.corner-ornament::before,
+.corner-ornament::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(198, 169, 118, 0.3);
+}
+
+.corner-ornament::before {
+  top: -1px;
+  left: -1px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.corner-ornament::after {
+  bottom: -1px;
+  right: -1px;
+  border-left: none;
+  border-top: none;
+}
+
+/* 菱形裝飾 */
+.diamond-decoration {
+  position: relative;
+  padding: 0 2rem;
+}
+
+.diamond-decoration::before,
+.diamond-decoration::after {
+  content: '◇';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(198, 169, 118, 0.5);
+  font-size: 0.5rem;
+}
+
+.diamond-decoration::before {
+  left: 0;
+}
+
+.diamond-decoration::after {
+  right: 0;
+}
